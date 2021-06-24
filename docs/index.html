@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dodo’s object detection package &mdash; dodo detector 0.6.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Package modules" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> dodo detector
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.6.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Package modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">dodo detector</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Dodo’s object detection package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dodo-s-object-detection-package">
+<h1>Dodo’s object detection package<a class="headerlink" href="#dodo-s-object-detection-package" title="Permalink to this headline">¶</a></h1>
+<p>This is a package that implements two types of object detection algorithms and provides them as Python classes, ready to be instantiated and used. The first algorithm uses a pipeline which consists of OpenCV keypoint detection and description algorithms, followed by feature matching and positioning using homography. Basically, <a class="reference external" href="https://docs.opencv.org/3.4.1/d1/de0/tutorial_py_feature_homography.html">this tutorial</a>.</p>
+<p>The second one uses any pre-trained convolutional network from the <a class="reference external" href="https://github.com/tensorflow/models/tree/master/research/object_detection">TensorFlow Object Detection API</a>. Basically, <a class="reference external" href="https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb">this tutorial</a>.</p>
+<p>As of now, the package works with both Python 2.7 and Python 3, but the tests work only on Python 3 because the code to download datasets is different between Python versions and I’m lazy.</p>
+<div class="section" id="why">
+<h2>Why<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h2>
+<p>I have been working with object detection for quite some time now. After having to reimplement some detection algorithms, which are available online, but most times in a very convoluted way, I decided to create a Python package to make things easier not only for me, but for others.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Besides the dependencies listed on <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, the package also depends on the <a class="reference external" href="https://github.com/opencv/opencv_contrib">OpenCV 3 nonfree/contrib packages</a>, which include the SURF <a class="footnote-reference brackets" href="#id7" id="id1">1</a> and SIFT <a class="footnote-reference brackets" href="#id8" id="id2">2</a> keypoint detection algorithms, as well as the <a class="reference external" href="https://github.com/tensorflow/models/tree/master/research/object_detection">TensorFlow Object Detection API</a>. Follow their respective documentation pages to install them.</p>
+<p>Since this package is not on PyPI, you can install it via <code class="docutils literal notranslate"><span class="pre">pip</span></code> like this:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/douglasrizzo/dodo_detector.git
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that The TensorFlow Object Detection API does not yet support TensorFlow 2. This package has successfully been tested (up until 2020-21-02) with <code class="docutils literal notranslate"><span class="pre">tensorflow&gt;=1.13,</span> <span class="pre">&lt;=1.15.2</span></code> and <code class="docutils literal notranslate"><span class="pre">tensorflow-gpu&gt;=1.13,</span> <span class="pre">&lt;=1.15.2</span></code>.</p>
+<p>The installation process detects if <code class="docutils literal notranslate"><span class="pre">tensorflow-gpu</span></code> is already installed. If not, it will install <code class="docutils literal notranslate"><span class="pre">tensorflow&gt;=1.13,</span> <span class="pre">&lt;=1.15.2</span></code> (without GPU support). If you want GPU support, make sure <code class="docutils literal notranslate"><span class="pre">tensorflow</span></code> is not installed and install <code class="docutils literal notranslate"><span class="pre">tensorflow-gpu&gt;=1.13,</span> <span class="pre">&lt;=1.15.2</span></code> yourself.</p>
+</div>
+<p>OpenCV is a hard dependency and is installed via the PyPI <code class="docutils literal notranslate"><span class="pre">opencv-python</span></code> package. If you already have OpenCV installed (<em>e.g.</em> from source), edit <em>setup.py</em> and remove the hard dependency before installing.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The package has two types of detector, a keypoint-based detector and a detector based on pre-trained convolutional neural networks from the TensorFlow <a class="reference external" href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md">model zoo</a>.</p>
+<p>All detectors have a common interface, with three methods:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">from_camera</span></code> takes a camera ID and uses OpenCV to read a frame stream, which is displayed on a separate window;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from_video</span></code> receives a video file and also displays the detection results on a window;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from_image</span></code> receives a single RGB image as a numpy array and returns a tuple containing an image with all the detected objects marked in it, and a dictionary containing object classes as keys and their detection information in tuples. Some classifiers return only bounding boxes, others return an additional confidence level. An example with one apple and two oranges detected in an image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;person&#39;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">204</span><span class="p">,</span> <span class="mi">456</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">534</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.9989906</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">182</span><span class="p">,</span> <span class="mi">283</span><span class="p">,</span> <span class="mi">370</span><span class="p">,</span> <span class="mi">383</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.99848276</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">181</span><span class="p">,</span> <span class="mi">222</span><span class="p">,</span> <span class="mi">368</span><span class="p">,</span> <span class="mi">282</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.9979938</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">184</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">379</span><span class="p">,</span> <span class="mi">109</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.9938652</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">169</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">371</span><span class="p">,</span> <span class="mi">66</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.98873794</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">199</span><span class="p">,</span> <span class="mi">397</span><span class="p">,</span> <span class="mi">371</span><span class="p">,</span> <span class="mi">440</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.96926546</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">197</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">191</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.96739936</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">184</span><span class="p">,</span> <span class="mi">363</span><span class="p">,</span> <span class="mi">377</span><span class="p">,</span> <span class="mi">414</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.945458</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;box&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">195</span><span class="p">,</span> <span class="mi">144</span><span class="p">,</span> <span class="mi">363</span><span class="p">,</span> <span class="mi">195</span><span class="p">),</span> <span class="s1">&#39;confidence&#39;</span><span class="p">:</span> <span class="mf">0.92953676</span><span class="p">}</span>
+<span class="p">]}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="section" id="keypoint-based-detector">
+<h3>Keypoint-based detector<a class="headerlink" href="#keypoint-based-detector" title="Permalink to this headline">¶</a></h3>
+<p>The keypoint-based object detector uses OpenCV 3 keypoint detection and description algorithms(namely, SURF <a class="footnote-reference brackets" href="#id7" id="id3">1</a>, SIFT <a class="footnote-reference brackets" href="#id8" id="id4">2</a> and RootSIFT <a class="footnote-reference brackets" href="#id9" id="id5">3</a>) to extract features from a database of images provided by the user. These features are then compared to features extracted from a target image, using feature matching algorithms also provided by OpenCV, in order to find the desired objects from the database in the target image.</p>
+<p>Since OpenCV has no implementation of RootSIFT, I stole <a class="reference external" href="https://www.pyimagesearch.com/2015/04/13/implementing-rootsift-in-python-and-opencv/">this one</a>.</p>
+<p>Example on running a keypoint-based detector:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dodo_detector.detection</span> <span class="kn">import</span> <span class="n">KeypointObjectDetector</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">KeypointObjectDetector</span><span class="p">(</span><span class="s1">&#39;/path/to/my/database_dir&#39;</span><span class="p">)</span>
+<span class="n">marked_image</span><span class="p">,</span> <span class="n">obj_dict</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The database directory must have the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">database_dir</span>
+    <span class="n">beer_can</span>
+        <span class="n">img1</span><span class="o">.</span><span class="n">jpg</span>
+        <span class="n">img2</span><span class="o">.</span><span class="n">jpg</span>
+        <span class="n">img3</span><span class="o">.</span><span class="n">jpg</span>
+    <span class="n">milk_box</span>
+        <span class="n">hauihu</span><span class="o">.</span><span class="n">jpg</span>
+        <span class="mf">172812.</span><span class="n">jpg</span>
+        <span class="n">you_require_additional_pylons</span><span class="o">.</span><span class="n">jpg</span>
+    <span class="n">chocolate_milk</span>
+        <span class="o">.</span>
+        <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+</pre></div>
+</div>
+<p>Basically, the top-level directory will contain subdirectories. The name of each subdirectory is the class name the program will return during detection. Inside each subdirectory is a collection of image files, whose keypoints will be extracted by the <code class="docutils literal notranslate"><span class="pre">KeypointObjectDetector</span></code> during the object construction. The keypoints will then be kept in-memory while the object exists.</p>
+<p>You can then use the methods provided by the detector to detect objects in your images, videos or camera feed.</p>
+</div>
+<div class="section" id="convolutional-neural-network-detector-4">
+<h3>Convolutional neural network detector <a class="footnote-reference brackets" href="#id10" id="id6">4</a><a class="headerlink" href="#convolutional-neural-network-detector-4" title="Permalink to this headline">¶</a></h3>
+<p>This detector uses TensorFlow Object Detection API. In order to use it, you must either train your own neural network using their API, or provide a trained network. I have a concise <a class="reference external" href="https://gist.github.com/douglasrizzo/c70e186678f126f1b9005ca83d8bd2ce">tutorial</a> on how to train a neural network, with other useful links.</p>
+<p>The training procedure will give you the <em>frozen inference graph</em>, which is a <code class="docutils literal notranslate"><span class="pre">.pb</span></code> file; and a <em>label map</em>, which is a text file with extension <code class="docutils literal notranslate"><span class="pre">.pbtxt</span></code> containing the names of your object classes.</p>
+<p>This type of detector must be pointed towards the paths for the frozen inference graph and label map. The number of classes can be explicitly passed, or else classes will be counted from the contents of the label map.</p>
+<p>Example on running a single-shot detector:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dodo_detector.detection</span> <span class="kn">import</span> <span class="n">SingleShotDetector</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">SingleShotDetector</span><span class="p">(</span><span class="s1">&#39;path/to/frozen/graph.pb&#39;</span><span class="p">,</span> <span class="s1">&#39;path/to/labels.pbtxt&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">marked_image</span><span class="p">,</span> <span class="n">obj_dict</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">from_image</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Have fun!</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><ol class="upperalpha simple" start="8">
+<li><p>Bay, A. Ess, T. Tuytelaars, and L. Van Gool, “Speeded-up robust features (SURF),” Computer vision and image understanding, vol. 110, no. 3, pp. 346–359, 2008.</p></li>
+</ol>
+</dd>
+<dt class="label" id="id8"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><ol class="upperalpha simple" start="4">
+<li><ol class="upperalpha simple" start="7">
+<li><p>Lowe, “Object recognition from local scale-invariant features,” in Proceedings of the Seventh IEEE International Conference on Computer Vision, 1999, vol. 2, pp. 1150–1157.</p></li>
+</ol>
+</li>
+</ol>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><ol class="upperalpha simple" start="18">
+<li><p>Arandjelović and A. Zisserman, “Three things everyone should know to improve object retrieval,” in 2012 IEEE Conference on Computer Vision and Pattern Recognition, 2012, pp. 2911–2918.</p></li>
+</ol>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
+<dd><ol class="upperalpha simple" start="23">
+<li><p>Liu et al., “SSD: Single Shot MultiBox Detector,” arXiv:1512.02325 [cs], vol. 9905, pp. 21–37, 2016.</p></li>
+</ol>
+</dd>
+</dl>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Package modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dodo_detector.html">dodo_detector.detection module</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="Package modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Douglas De Rizzo Meneghetti
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
